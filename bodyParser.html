@@ -1,0 +1,44 @@
+<html>
+<head>
+  <title></title>
+<!-- css -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+
+
+</head>
+<body>
+<h1 class="text-center">stages in working with <code>body parser</code></h1>
+<div class="container">
+<div class="col-md-6 col-md-push-3">
+<div class="row">
+      <ol>
+        <li>Install npm package from terminal-<code>npm install body-parser --save</code></li>
+
+        <li>Embed the bolded lines onto the <code>server.js</code><br>
+        <pre>
+        var express = require('express');
+        <b><em>var bodyParser = require('body-parser');</em></b>   //embeding the package
+
+        var app = express();
+
+        <b><em>app.use(bodyParser.urlencoded({ extended: false }));</em></b>   //add this line
+        <b><em>app.use(bodyParser.json());  //add this line</em></b>
+        </pre>
+        </li>
+      </ol>
+      <p><h2>In General</h2>Body-parser extracts the entire body portion of an incoming request stream and exposes it on req.body as something that is easier to work with. <br><br>
+
+      <code>bodyParser.urlencoded()</code><b>parses</b> (fancy word to convert) the body portion as <mark>URL encoded</mark> data (which is how browsers tend to send forms) and <b>exposes</b> the resulting object (containing the keys and values) on <code>req.body</code><br><br>
+
+      <code>bodyParser.json()</code>parses the body portion as <mark>JSON</mark> and exposes the resulting object on<code>req.body</code><br><br>
+
+     <h2>we need to put these two app.use functions <mark>above</mark> all the routes so our req.body is properly populated before the route function get's called</h2>
+    </div>
+  </div>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" </script>
+
+</body>
+</html>
+
+
